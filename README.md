@@ -21,6 +21,7 @@
 [• HTTP Status Code](https://http.cat/)
 [• Compare Project](https://github.com/platzi/fundamentos-nestjs/tree/18-step)
 [• ERROR LINE SECUENCE](https://bobbyhadz.com/blog/eslint-delete-cr-prettier)
+[• ENV VARIABLES](https://docs.nestjs.com/techniques/configuration)
 
 ## Dependencies
 
@@ -44,6 +45,10 @@ $ npm run start:prod
 
 # lint
 $ npm run lint -- --fix
+
+# env variables
+$ NODE_ENV=prod npm run start:dev
+
 
 # generate controller
 $ nest g controller controllers/<name> --no-spec --flat
