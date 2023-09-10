@@ -20,6 +20,7 @@
 
 [• HTTP Status Code](https://http.cat/)
 [• Compare Project](https://github.com/platzi/fundamentos-nestjs/tree/18-step)
+[• ERROR LINE SECUENCE](https://bobbyhadz.com/blog/eslint-delete-cr-prettier)
 
 ## Dependencies
 
@@ -40,6 +41,9 @@ $ npm run start
 $ npm run start:dev
 # production mode
 $ npm run start:prod
+
+# lint
+$ npm run lint -- --fix
 
 # generate controller
 $ nest g controller controllers/<name> --no-spec --flat
