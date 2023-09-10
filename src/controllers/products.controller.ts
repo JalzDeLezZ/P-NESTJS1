@@ -11,6 +11,7 @@ import {
   HttpStatus,
   HttpCode,
   Res,
+  ParseIntPipe,
 } from '@nestjs/common';
 
 import { Response } from 'express';
@@ -42,11 +43,8 @@ export class ProductsController {
 
   @Get(':productId')
   @HttpCode(HttpStatus.ACCEPTED)
-  getProduct(@Param('productId') productId: string) {
-    // return {
-    //   message: `product ${productId}`,
-    // };
-    return this.productsService.findOne(+productId);
+  getProduct(@Param('productId', ParseIntPipe) productId: number) {
+    return this.productsService.findOne(productId);
   }
   // http://127.0.0.1:3000/products/one
 
@@ -63,10 +61,6 @@ export class ProductsController {
 
   @Post()
   create(@Body() payload: any) {
-    // return {
-    //   message: 'accion de crear',
-    //   payload,
-    // };
     return this.productsService.create(payload);
   }
   // http://localhost:3000/products
@@ -74,16 +68,11 @@ export class ProductsController {
   //put update all the fields
   @Put(':id')
   update(@Param('id') id: number, @Body() payload: any) {
-    /* return {
-      id,
-      payload,
-    }; */
     return this.productsService.update(+id, payload);
   }
 
   @Delete(':id')
   delete(@Param('id') id: number) {
-    // return `product ${id} deleted`;
     return this.productsService.remove(+id);
   }
 

@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { Product } from 'src/Entities/product.entity';
 
 @Injectable()
@@ -23,6 +28,11 @@ export class ProductsService {
     const product = this.fake_products.find((e) => e.id === id);
     if (!product) {
       throw new NotFoundException(`Product #${id} not found`);
+      // {
+      //   "message": "Product #1 not found",
+      //   "error": "Not Found",
+      //   "statusCode": 404
+      // }
     }
     return product;
   }
@@ -53,7 +63,14 @@ export class ProductsService {
   remove(id: number) {
     const index = this.fake_products.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new NotFoundException(`Product #${id} not found`);
+      throw new HttpException(
+        `Error no se encontro el producto #${id}`,
+        HttpStatus.BAD_REQUEST,
+      );
+      // {
+      //   "statusCode": 400,
+      //   "message": "Error no se encontro el producto #0"
+      // }
     }
     this.fake_products.splice(index, 1);
     return true;
