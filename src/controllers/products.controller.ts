@@ -83,7 +83,8 @@ export class ProductsController {
 
   @Delete(':id')
   delete(@Param('id') id: number) {
-    return `product ${id} deleted`;
+    // return `product ${id} deleted`;
+    return this.productsService.remove(+id);
   }
 
   //patch only update the fields that we send
