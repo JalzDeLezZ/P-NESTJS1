@@ -26,23 +26,31 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Commands
 
 ```bash
+# install
 $ npm install
-```
-
-## Running the app
-
-```bash
 # development
 $ npm run start
-
 # watch mode
 $ npm run start:dev
-
 # production mode
 $ npm run start:prod
+
+# generate controller
+$ nest g controller controllers/<name> --no-spec --flat
+
+# install nestjs and create project
+501  node --version
+502  npm i -g @nestjs/cli
+503  nest --version
+504  nest --help
+505  nest new platzi-store
+506  mkdir backend-nestjs
+507  mv platzi-store backend-nestjs/
+508  history
+
 ```
 
 ## Test
@@ -61,21 +69,6 @@ $ npm run test:cov
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Bash Commands
-
-```bash
-  501  node --version
-  502  npm i -g @nestjs/cli
-  503  nest --version
-  504  nest --help
-  505  nest new platzi-store
-  506  mkdir backend-nestjs
-  507  mv platzi-store backend-nestjs/
-  508  history
-  509  npm run start
-  509  npm run start:dev
-```
 
 ## Stay in touch
 
