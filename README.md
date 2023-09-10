@@ -34,6 +34,8 @@ $ npm run start:prod
 
 # generate controller
 $ nest g controller controllers/<name> --no-spec --flat
+# generate service
+$ nest g service services/<name> --no-spec --flat
 
 # install nestjs and create project
 501  node --version
