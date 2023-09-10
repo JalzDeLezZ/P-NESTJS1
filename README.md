@@ -20,6 +20,14 @@
 
 [• HTTP Status Code](https://http.cat/)
 
+## Dependencies
+
+<ul>
+  <li>class-validator</li>
+  <li>class-transformer</li>
+  <li>@nestjs/mapped-types</li>
+</ul>
+
 ## Commands
 
 ```bash
