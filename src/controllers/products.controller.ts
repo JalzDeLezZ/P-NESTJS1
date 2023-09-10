@@ -20,6 +20,7 @@ import { Response } from 'express';
 import { ProductsService } from 'src/services/products.service';
 
 import { MyParseIntPipe } from 'src/common/parse-int.pipe';
+import { CreateProductDto, UpdateProductDto } from 'src/dtos/products.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -64,14 +65,14 @@ export class ProductsController {
   }
 
   @Post()
-  create(@Body() payload: any) {
+  create(@Body() payload: CreateProductDto) {
     return this.productsService.create(payload);
   }
   // http://localhost:3000/products
 
   //put update all the fields
   @Put(':id')
-  update(@Param('id') id: number, @Body() payload: any) {
+  update(@Param('id') id: number, @Body() payload: UpdateProductDto) {
     return this.productsService.update(+id, payload);
   }
 
