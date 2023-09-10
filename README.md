@@ -62,7 +62,6 @@ $ npm run test:cov
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-
 ## Bash Commands
 
 ```bash
@@ -75,6 +74,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
   507  mv platzi-store backend-nestjs/
   508  history
   509  npm run start
+  509  npm run start:dev
 ```
 
 ## Stay in touch
