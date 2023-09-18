@@ -7,11 +7,11 @@ import { HttpService, HttpModule } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-
+import { enviroments } from './enviroments';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: enviroments[process.env.NODE_ENV] || '.env',
       isGlobal: true,
     }),
     HttpModule,

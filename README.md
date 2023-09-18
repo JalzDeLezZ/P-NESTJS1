@@ -51,6 +51,7 @@ $ npm run lint -- --fix
 
 # env variables
 $ NODE_ENV=prod npm run start:dev
+$ NODE_ENV=stag npm run start:dev
 
 
 # generate controller
