@@ -32,6 +32,7 @@
   <li>@nestjs/mapped-types</li>
   <li>npm i --save @nestjs/axios</li>
   <li>npm i @nestjs/config</li>
+  <li>$ npm i --save joi</li>
 </ul>
 
 ## Commands
