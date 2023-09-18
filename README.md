@@ -31,6 +31,7 @@
   <li>class-transformer</li>
   <li>@nestjs/mapped-types</li>
   <li>npm i --save @nestjs/axios</li>
+  <li>npm i @nestjs/config</li>
 </ul>
 
 ## Commands
