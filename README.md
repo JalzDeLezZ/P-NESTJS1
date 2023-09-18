@@ -22,6 +22,7 @@
 [• Compare Project](https://github.com/platzi/fundamentos-nestjs/tree/18-step)
 [• ERROR LINE SECUENCE](https://bobbyhadz.com/blog/eslint-delete-cr-prettier)
 [• ENV VARIABLES](https://docs.nestjs.com/techniques/configuration)
+[• quicktype](https://app.quicktype.io/)
 
 ## Dependencies
 
