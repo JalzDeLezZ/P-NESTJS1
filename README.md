@@ -29,6 +29,7 @@
   <li>class-validator</li>
   <li>class-transformer</li>
   <li>@nestjs/mapped-types</li>
+  <li>npm i --save @nestjs/axios</li>
 </ul>
 
 ## Commands
