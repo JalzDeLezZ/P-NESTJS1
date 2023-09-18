@@ -24,12 +24,14 @@ export class ProductsController {
   getProducts(
     @Query('limit') limit = 100,
     @Query('offset') offset = 0,
-    @Query('brand') brand: string,
+    // @Query('brand') brand: string,
   ) {
+    const products = this.productsService.findAll();
     return {
-      message: `products limit=> ${limit} offset=> ${offset} brand=> ${brand}`,
+      page: offset,
+      limit,
+      data: products,
     };
-    // return this.productsService.findAll();
   }
 
   @Get('filter')

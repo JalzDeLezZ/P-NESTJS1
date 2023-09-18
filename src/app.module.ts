@@ -4,7 +4,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 
-const API_KEY = '12345634';
+const API_KEY = '12345634_NO_PROD';
 const API_KEY_PROD = 'PROD1212121SA';
 
 @Module({
