@@ -33,6 +33,7 @@
   <li>npm i --save @nestjs/axios</li>
   <li>npm i @nestjs/config</li>
   <li>$ npm i --save joi</li>
+  <li>$ npm i --save @nestjs/swagger swagger-ui-express</li>
 </ul>
 
 ## Commands
@@ -46,6 +47,10 @@ $ npm run start
 $ npm run start:dev
 # production mode
 $ npm run start:prod
+
+# swagger
+$ rm -rf dist
+$ http://localhost:3000/docs
 
 # lint
 $ npm run lint -- --fix
