@@ -1,5 +1,8 @@
 import { MongoClient } from 'mongodb';
 import { Global, Module } from '@nestjs/common';
+import { ConfigType } from '@nestjs/config';
+
+import config from '../config';
 
 const API_KEY = 'KEY11111111';
 const API_KEY_PROD = 'PRODKEY1212121SA';
@@ -19,13 +22,15 @@ const DATE_TIME = new Date().toISOString();
     },
     {
       provide: 'MONGO',
-      useFactory: async () => {
-        const uri =
-          'mongodb://root:example@localhost:27018/?authMechanism=DEFAULT';
+      useFactory: async (configService: ConfigType<typeof config>) => {
+        const { connection, user, password, host, port, dbName } =
+          configService.mongo;
+        const uri = `${connection}://${user}:${password}@${host}:${port}/?authMechanism=DEFAULT`;
         const client = new MongoClient(uri);
         await client.connect();
-        return client.db('platzi-store');
+        return client.db(dbName);
       },
+      inject: [config.KEY],
     },
   ],
   exports: ['API_KEY', 'GLOBAL_VALUE', 'MONGO'],
