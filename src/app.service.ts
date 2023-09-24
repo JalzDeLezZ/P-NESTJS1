@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { /* ConfigService, */ ConfigType } from '@nestjs/config';
 import config from './config';
-
+import { Db } from 'mongodb';
 @Injectable()
 export class AppService {
   constructor(
@@ -10,6 +10,7 @@ export class AppService {
     @Inject('API_KEY') private readonly apiKey: string,
     @Inject('GLOBAL_VALUE') private readonly globalValue: string,
     @Inject('TASKS') private tasks: TestTask[],
+    @Inject('MONGO') private database: Db,
   ) {}
   getHello(): string {
     // const env = this.configService.get<string>('DATABASE_NAME');
@@ -21,6 +22,10 @@ export class AppService {
     const message = `Hello World! ${this.globalValue} :: Database: ${env_db}`;
     const tasks = this.tasks;
     return JSON.stringify({ keys, message, tasks });
+  }
+  getTasks() {
+    const taskCollection = this.database.collection('tasks');
+    return taskCollection.find().toArray();
   }
 }
 
