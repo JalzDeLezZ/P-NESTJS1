@@ -37,6 +37,7 @@
   <li>$ npm i --save @nestjs/swagger swagger-ui-express</li>
   <li>npm i mongodb</li>
   <li>npm i @types/mongodb -D</li>
+  <li>npm install --save @nestjs/mongoose mongoose</li>
 </ul>
 
 ## Commands
