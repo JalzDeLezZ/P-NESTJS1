@@ -35,6 +35,8 @@
   <li>npm i @nestjs/config</li>
   <li>$ npm i --save joi</li>
   <li>$ npm i --save @nestjs/swagger swagger-ui-express</li>
+  <li>npm i mongodb</li>
+  <li>npm i @types/mongodb -D</li>
 </ul>
 
 ## Commands
