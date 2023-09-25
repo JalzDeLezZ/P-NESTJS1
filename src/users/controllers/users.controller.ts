@@ -35,6 +35,11 @@ export class UsersController {
   create(@Body() payload: CreateUserDto) {
     return this.usersService.create(payload);
   }
+  /*
+  @Post('/multiple')
+  createMultiple(@Body() payload: CreateAccountDto[]) {
+    return this.accountsService.createMultipleAccounts(payload);
+  }*/
 
   @Put(':id')
   update(

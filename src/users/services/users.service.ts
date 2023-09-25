@@ -52,6 +52,22 @@ export class UsersService {
     return newUser;
   }
 
+  /*
+  async createMultipleAccounts(data: CreateAccountDto[]) {
+    try {
+      const newModels = data.map((account) => {
+        return new this.accountModel(account);
+      });
+      const savedModels = await Promise.all(
+        newModels.map((account) => account.save()),
+      );
+      return savedModels;
+    } catch (error) {
+      throw new BadRequestException(error.message);
+    }
+  }
+  */
+
   update(id: number, changes: UpdateUserDto) {
     const user = this.findOne(id);
     const index = this.users.findIndex((item) => item.id === id);
