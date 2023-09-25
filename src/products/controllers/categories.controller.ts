@@ -3,15 +3,14 @@ import {
   Controller,
   Get,
   Param,
-  Post,
-  Body,
-  Put,
-  Delete,
-  ParseIntPipe,
+  // Post,
+  // Body,
+  // Put,
+  // Delete,
 } from '@nestjs/common';
 
 import { CategoriesService } from '../services/categories.service';
-import { CreateCategoryDto, UpdateCategoryDto } from './../dtos/category.dtos';
+// import { CreateCategoryDto, UpdateCategoryDto } from './../dtos/category.dtos';
 
 @ApiTags('categories')
 @Controller('categories')
@@ -24,11 +23,11 @@ export class CategoriesController {
   }
 
   @Get(':id')
-  get(@Param('id', ParseIntPipe) id: number) {
+  get(@Param('id') id: number) {
     return this.categoriesService.findOne(id);
   }
 
-  @Post()
+  /* @Post()
   create(@Body() payload: CreateCategoryDto) {
     return this.categoriesService.create(payload);
   }
@@ -44,5 +43,5 @@ export class CategoriesController {
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.categoriesService.remove(+id);
-  }
+  } */
 }
