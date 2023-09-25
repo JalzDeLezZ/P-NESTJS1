@@ -12,13 +12,6 @@ const DATE_TIME = new Date().toISOString();
 @Global()
 @Module({
   imports: [
-    //! 1st way
-    // MongooseModule.forRoot('mongodb://localhost:27018', {
-    //   user: 'root',
-    //   pass: 'example',
-    //   dbName: 'platzi-store',
-    // }),
-    //! 2nd way
     MongooseModule.forRootAsync({
       useFactory: (configService: ConfigType<typeof config>) => {
         const { connection, user, password, host, port, dbName } =

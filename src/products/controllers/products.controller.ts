@@ -5,16 +5,16 @@ import {
   Get,
   Query,
   Param,
-  Post,
-  Body,
-  Put,
-  Delete,
+  // Post,
+  // Body,
+  // Put,
+  // Delete,
   HttpStatus,
   HttpCode,
 } from '@nestjs/common';
 
-import { ParseIntPipe } from '@nestjs/common';
-import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
+// import { ParseIntPipe } from '@nestjs/common';
+// import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
 
 import { ProductsService } from './../services/products.service';
 
@@ -25,12 +25,8 @@ export class ProductsController {
 
   @Get()
   @ApiOperation({ summary: 'List of products' })
-  getProducts(
-    @Query('limit') limit = 100,
-    @Query('offset') offset = 0,
-    // @Query('brand') brand: string,
-  ) {
-    const products = this.productsService.findAll();
+  async getProducts(@Query('limit') limit = 100, @Query('offset') offset = 0) {
+    const products = await this.productsService.findAll();
     return {
       page: offset,
       limit,
@@ -45,19 +41,12 @@ export class ProductsController {
 
   @Get(':productId')
   @HttpCode(HttpStatus.ACCEPTED)
-  getOne(@Param('productId', ParseIntPipe) productId: number) {
-    // response.status(200).send({
-    //   message: `product ${productId}`,
-    // });
+  getOne(@Param('productId') productId: string) {
     return this.productsService.findOne(productId);
   }
 
-  @Post()
+  /*  @Post()
   create(@Body() payload: CreateProductDto) {
-    // return {
-    //   message: 'accion de crear',
-    //   payload,
-    // };
     return this.productsService.create(payload);
   }
 
@@ -69,5 +58,5 @@ export class ProductsController {
   @Delete(':id')
   delete(@Param('id') id: string) {
     return this.productsService.remove(+id);
-  }
+  } */
 }
