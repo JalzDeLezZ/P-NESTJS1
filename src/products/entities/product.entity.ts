@@ -9,7 +9,8 @@ export class Product extends Document {
   @Prop()
   description: string;
 
-  @Prop({ type: Number })
+  //? Index: Add priority to the search
+  @Prop({ type: Number, index: true })
   price: number;
 
   @Prop({ type: Number })
@@ -20,3 +21,7 @@ export class Product extends Document {
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
+
+//? Compound Index
+// ProductSchema.index({ price: 1, stock: -1 }); //* Greater performance in the search
+ProductSchema.index({ price: 1, stock: -1 }, { unique: true }); //* Avoid duplicates
