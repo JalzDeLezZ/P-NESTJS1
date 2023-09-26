@@ -9,6 +9,9 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true, //? remove all properties that are not in the DTO
       forbidNonWhitelisted: true, //? throw an error if a property that is not in the DTO is sent
+      transformOptions: {
+        enableImplicitConversion: true, //? transform the types of the variables
+      },
     }),
   ); //? global pipe
 

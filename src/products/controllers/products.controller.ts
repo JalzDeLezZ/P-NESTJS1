@@ -13,7 +13,11 @@ import {
   HttpCode,
 } from '@nestjs/common';
 
-import { CreateProductDto, UpdateProductDto } from '../dtos/products.dtos';
+import {
+  CreateProductDto,
+  UpdateProductDto,
+  FilterProductsDto,
+} from '../dtos/products.dtos';
 
 import { ProductsService } from './../services/products.service';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
@@ -25,11 +29,9 @@ export class ProductsController {
 
   @Get()
   @ApiOperation({ summary: 'List of products' })
-  async getProducts(@Query('limit') limit = 100, @Query('offset') offset = 0) {
-    const products = await this.productsService.findAll();
+  async getProducts(@Query() params: FilterProductsDto) {
+    const products = await this.productsService.findAll(params);
     return {
-      page: offset,
-      limit,
       data: products,
     };
   }
