@@ -6,8 +6,8 @@ import {
   Body,
   Put,
   Delete,
-  ParseIntPipe,
 } from '@nestjs/common';
+import { ApiOperation } from '@nestjs/swagger';
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
@@ -17,40 +17,40 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
+  @ApiOperation({
+    summary: 'List of users',
+  })
   findAll() {
     return this.usersService.findAll();
   }
 
+  @Get('tasks')
+  tasks() {
+    return this.usersService.getTasks();
+  }
+
   @Get(':id')
-  get(@Param('id', ParseIntPipe) id: number) {
+  get(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
 
   @Get(':id/orders')
-  getOrders(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.getOrderByUser(id);
+  getOrders(@Param('id') id: string) {
+    return this.usersService.getOrdersByUser(id);
   }
 
   @Post()
   create(@Body() payload: CreateUserDto) {
     return this.usersService.create(payload);
   }
-  /*
-  @Post('/multiple')
-  createMultiple(@Body() payload: CreateAccountDto[]) {
-    return this.accountsService.createMultipleAccounts(payload);
-  }*/
 
   @Put(':id')
-  update(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() payload: UpdateUserDto,
-  ) {
+  update(@Param('id') id: string, @Body() payload: UpdateUserDto) {
     return this.usersService.update(id, payload);
   }
 
   @Delete(':id')
-  remove(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.remove(+id);
+  remove(@Param('id') id: string) {
+    return this.usersService.remove(id);
   }
 }
