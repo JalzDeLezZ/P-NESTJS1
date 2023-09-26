@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model, FilterQuery } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from './../entities/product.entity';
@@ -15,7 +15,16 @@ export class ProductsService {
   ) {}
 
   async findAll(params?: FilterProductsDto) {
+    // http://localhost:3000/products?limit=3&offset=1
     const { limit = 5, offset = 0 } = params;
+
+    const filters: FilterQuery<Product> = {};
+
+    // http://localhost:3000/products?minPrice=2000&maxPrice=5000
+    if (params.minPrice && params.maxPrice) {
+      filters.price = { $gte: params.minPrice, $lte: params.maxPrice };
+      return this.productModel.find(filters).skip(offset).limit(limit).exec();
+    }
 
     const [total, products] = await Promise.all([
       this.productModel.countDocuments(),
