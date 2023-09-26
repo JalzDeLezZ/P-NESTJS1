@@ -15,15 +15,18 @@ export class ProductsService {
   ) {}
 
   async findAll(params?: FilterProductsDto) {
-    if (params) {
-      const { limit, offset } = params;
-      return await this.productModel
+    const { limit = 5, offset = 0 } = params;
+
+    const [total, products] = await Promise.all([
+      this.productModel.countDocuments(),
+      this.productModel
         .find()
         .skip(offset * limit)
         .limit(limit)
-        .exec();
-    }
-    return await this.productModel.find().exec();
+        .exec(),
+    ]);
+
+    return { total, products };
   }
 
   async findOne(_id: string) {
