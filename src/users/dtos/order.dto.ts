@@ -47,3 +47,11 @@ export class UpdateOrderDto extends PartialType(
   "date": "2023-12-12"
 }
  */
+
+export class AddProductsToOrdersDTO {
+  @IsArray()
+  @ArrayNotEmpty() // Verificar que el array no esté vacío
+  @ArrayUnique() // Verificar que los elementos del array sean únicos
+  @IsMongoId({ each: true }) // Verificar que cada elemento sea un ID de MongoDB
+  readonly productsIds: string[];
+}
