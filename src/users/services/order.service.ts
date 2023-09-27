@@ -10,7 +10,18 @@ export class OrdersService {
   constructor(@InjectModel(Order.name) private orderModel: Model<Order>) {}
 
   findAll() {
-    return this.orderModel.find().exec();
+    return this.orderModel.find().populate('customer').populate('products');
+    //! if you want to populate a subdocument, you can do it like this:
+    /* return this.orderModel
+      .find()
+      .populate('productIds)
+      .populate({
+        path: 'customer',
+        populate: {
+          path: 'skills',
+        },
+      })
+      .exec();*/
   }
 
   async findOne(id: string) {
