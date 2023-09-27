@@ -40,7 +40,10 @@ export class ProductsService {
 
   async findOne(_id: string) {
     try {
-      const product = await this.productModel.findById(_id).exec();
+      const product = await this.productModel
+        .findById(_id)
+        .populate('brand')
+        .exec();
       if (!product) {
         throw new NotFoundException(`Product #${_id} not found`);
       }
