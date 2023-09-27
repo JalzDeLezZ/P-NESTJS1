@@ -94,6 +94,9 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+
+# delete the last commit and keep the changes
+$ git reset HEAD~1 --soft
 ```
 
 ## Support
