@@ -43,6 +43,12 @@
 ## Commands
 
 ```bash
+# Raise database container
+$ docker-compose up -d mongo
+
+# Check container
+$ docker ps
+
 # install
 $ npm install
 # development
@@ -70,6 +76,10 @@ $ nest g controller controllers/<name> --no-spec --flat
 $ nest g service services/<name> --no-spec --flat
 # generate pipe
 $ nest g pipe pipes/<name> --no-spec --flat
+
+# authentification
+$ nest g mo auth
+$ nest g gu auth/guards/apiKey --flat
 
 # install nestjs and create project
 501  node --version

@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /mongo_data
+/test-pdf
 
 # Logs
 logs
