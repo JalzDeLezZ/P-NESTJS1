@@ -38,6 +38,9 @@
   <li>npm i mongodb</li>
   <li>npm i @types/mongodb -D</li>
   <li>npm install --save @nestjs/mongoose mongoose</li>
+  <li>npm i bcrypt</li>
+  <li>npm i @types/bcrypt -D</li>
+  <li>npm i nestjs-mongoose-exclude</li>
 </ul>
 
 ## Commands

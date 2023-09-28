@@ -6,6 +6,7 @@ import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 import { ProductsService } from '../../products/services/products.service';
 import { Db } from 'mongodb';
 import { Model } from 'mongoose';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -38,9 +39,15 @@ export class UsersService {
     };
   }
 
-  create(data: CreateUserDto) {
+  async create(data: CreateUserDto) {
     const newModel = new this.userModel(data);
+    const hashPassword = await bcrypt.hash(newModel.password, 10);
+    newModel.password = hashPassword;
     return newModel.save();
+  }
+
+  findByEmail(email: string) {
+    return this.userModel.findOne({ email });
   }
 
   update(id: string, changes: UpdateUserDto) {
