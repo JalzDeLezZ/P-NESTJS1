@@ -41,6 +41,9 @@
   <li>npm i bcrypt</li>
   <li>npm i @types/bcrypt -D</li>
   <li>npm i nestjs-mongoose-exclude</li>
+  <li>$ npm install --save @nestjs/passport passport passport-local</li>
+  <li>$ npm install --save-dev @types/passport-local</li>
+
 </ul>
 
 ## Commands
