@@ -7,6 +7,7 @@ import {
   Put,
   Delete,
   UseInterceptors,
+  Query,
   // UseInterceptors,
   // ClassSerializerInterceptor,
 } from '@nestjs/common';
@@ -42,11 +43,24 @@ export class UsersController {
   tasks() {
     return this.usersService.getTasks();
   }
+  // GET http://localhost:3000/users/find?email=santiango@mail.com
+  @Get('find')
+  getByEmail(@Query('email') encodedEmail: string) {
+    const email = decodeURIComponent(encodedEmail);
+    return this.usersService.findByEmail(email);
+  }
 
   @Get(':id')
   get(@Param('id') id: string) {
     return this.usersService.findOne(id);
   }
+
+  // GET http://localhost:3000/users/email/santiango%40mail.com
+  // @Get('email/:email')
+  // getByMail(@Param('email') encodedEmail: string) {
+  //   const email = decodeURIComponent(encodedEmail); // Decodifica el valor
+  //   return this.usersService.findByEmail(email);
+  // }
 
   @Get(':id/orders')
   getOrders(@Param('id') id: string) {
