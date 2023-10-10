@@ -43,6 +43,8 @@
   <li>npm i nestjs-mongoose-exclude</li>
   <li>$ npm install --save @nestjs/passport passport passport-local</li>
   <li>$ npm install --save-dev @types/passport-local</li>
+  <li>npm i @nestjs/jwt passport-jwt</li>
+  <li>npm install --save-dev @types/passport-jwt</li>
 
 </ul>
 
