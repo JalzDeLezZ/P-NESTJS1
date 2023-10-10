@@ -11,6 +11,7 @@ import {
   Delete,
   HttpStatus,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 
 import {
@@ -21,7 +22,9 @@ import {
 
 import { ProductsService } from './../services/products.service';
 import { MongoIdPipe } from 'src/common/mongo-id.pipe';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard('jwt'))
 @ApiTags('products')
 @Controller('products')
 export class ProductsController {
