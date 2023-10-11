@@ -26,8 +26,9 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { Public } from 'src/auth/decorators/public.decorator';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { Role } from 'src/auth/models/roles.model';
+import { RolesGuard } from 'src/auth/guards/roles/roles.guard';
 
-@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard, RolesGuard)
 @ApiTags('products')
 @Controller('products')
 export class ProductsController {
@@ -55,7 +56,7 @@ export class ProductsController {
     return this.productsService.findOne(productId);
   }
 
-  @Roles(Role.ADMIN)
+  @Roles(Role.ADMIN) //? only admin can create products
   @Post()
   create(@Body() payload: CreateProductDto) {
     return this.productsService.create(payload);
