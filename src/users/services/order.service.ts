@@ -63,6 +63,6 @@ export class OrdersService {
   }
 
   async findOrdersByUser(userId: string) {
-    return this.orderModel.find({ customer: userId });
+    return this.orderModel.find({ customer: userId }).populate('products');
   }
 }
