@@ -1,0 +1,27 @@
+Products IDs :
+				"_id": "652812ac8333f73ffcda13cf",
+				"_id": "652812d48333f73ffcda13d2",
+				"_id": "652812f98333f73ffcda13d6",
+				"_id": "652813198333f73ffcda13da",
+
+
+Userts IDs :
+[
+	{
+		"_id": "652740c9f93087616db6ab7a",
+		"email": "customer@mail.com",
+		"role": "customer"
+	},
+	{
+		"_id": "652740e1f93087616db6ab7c",
+		"email": "adminx@mail.com",
+		"role": "admin"
+	},
+	{
+		"_id": "652741f89af9f1892587874a",
+		"email": "sophiaxxx@mail.com",
+		"role": "customer"
+	}
+]
+
+

@@ -8,14 +8,17 @@ import {
   Delete,
   UseInterceptors,
   Query,
-  // UseInterceptors,
-  // ClassSerializerInterceptor,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
+import { RolesGuard } from 'src/auth/guards/roles/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { Role } from 'src/auth/models/roles.model';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 //? 3rd Method for excluding password
 @UseInterceptors(
@@ -24,6 +27,7 @@ import { SanitizeMongooseModelInterceptor } from 'nestjs-mongoose-exclude';
     excludeMongooseV: true,
   }),
 )
+@UseGuards(JwtAuthGuard, RolesGuard)
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
@@ -62,6 +66,7 @@ export class UsersController {
   //   return this.usersService.findByEmail(email);
   // }
 
+  @Roles(Role.ADMIN)
   @Get(':id/orders')
   getOrders(@Param('id') id: string) {
     return this.usersService.getOrdersByUser(id);

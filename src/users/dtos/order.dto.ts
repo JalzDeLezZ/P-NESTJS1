@@ -1,10 +1,11 @@
 import {
   IsMongoId,
   IsNotEmpty,
-  IsDate,
   IsArray,
   ArrayNotEmpty,
   ArrayUnique,
+  IsOptional,
+  IsDate,
 } from 'class-validator';
 import { OmitType, PartialType } from '@nestjs/swagger';
 
@@ -20,8 +21,8 @@ export class CreateOrderDto {
   readonly customer: string;
 
   @IsDate()
-  @IsNotEmpty()
-  readonly date: Date;
+  @IsOptional()
+  date: string;
 
   @IsArray()
   @ArrayNotEmpty() // Verificar que el array no esté vacío

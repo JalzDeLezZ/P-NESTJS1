@@ -3,15 +3,15 @@ import { InjectModel } from '@nestjs/mongoose';
 
 import { User } from '../entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { ProductsService } from '../../products/services/products.service';
 import { Db } from 'mongodb';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
+import { OrdersService } from './order.service';
 
 @Injectable()
 export class UsersService {
   constructor(
-    private productsService: ProductsService,
+    private orderService: OrdersService,
     @Inject('MONGO') private databaseMongo: Db,
     @InjectModel(User.name) private userModel: Model<User>,
   ) {}
@@ -31,11 +31,15 @@ export class UsersService {
 
   async getOrdersByUser(userId: string) {
     const user = await this.findOne(userId);
+    // const user_id = user._id.toString();
+    if (!user) throw new NotFoundException(`User #${userId} not found`);
+
+    const orders_by_user = await this.orderService.findOrdersByUser(userId);
+
     return {
       date: new Date(),
       user,
-      // products: this.productsService.findAll(),
-      products: [],
+      orders: orders_by_user,
     };
   }
 

@@ -10,18 +10,18 @@ export class OrdersService {
   constructor(@InjectModel(Order.name) private orderModel: Model<Order>) {}
 
   findAll() {
-    return this.orderModel.find().populate('customer').populate('products');
+    return this.orderModel.find().populate('products');
     //! if you want to populate a subdocument, you can do it like this:
     /* return this.orderModel
       .find()
-      .populate('productIds)
+      .populate('productIds')
       .populate({
         path: 'customer',
         populate: {
           path: 'skills',
         },
       })
-      .exec();*/
+      .exec(); */
   }
 
   async findOne(id: string) {
@@ -29,6 +29,9 @@ export class OrdersService {
   }
 
   create(data: CreateOrderDto) {
+    if (!data.date) {
+      data.date = new Date().toISOString();
+    }
     const newModel = new this.orderModel(data);
     return newModel.save();
   }
@@ -57,5 +60,9 @@ export class OrdersService {
       order.products.push(pid);
     });
     return order.save();
+  }
+
+  async findOrdersByUser(userId: string) {
+    return this.orderModel.find({ customer: userId });
   }
 }
